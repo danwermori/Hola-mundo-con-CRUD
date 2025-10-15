@@ -29,6 +29,6 @@
             Heho con corazón en PHP MVC
         </small>
     </footer>
+    <script src="<?= BASE_URL ? rtrim(BASE_URL, '/') : '' ?>/asset/js/app.js"></script>
 </body>
-
 </html>
