@@ -5,7 +5,7 @@ class Controller
     protected function views(string $views, array $data = [])
     {
         extract($data);
-        $viewFile = __DIR__ . '/../app/views/' . $view . '.php';
+        $viewFile = __DIR__ . '/../app/views/' . $views . '.php';
         if (!file_exists($viewFile)) {
             http_response_code(404);
             echo "Vista no encontrada: {$views}";

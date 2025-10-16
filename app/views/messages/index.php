@@ -1,5 +1,7 @@
 <?php
-/** @var array $mensajes */ ?>
+
+/** @var array $mensajes */
+?>
 <section>
     <h2>Lista de Mensajes</h2>
     <?php if (empty($mensajes)): ?>
@@ -15,8 +17,8 @@
                     <p><?= nl2br(htmlspecialchars(mb_strimwidth($m['descripcion'], 0, 140, '…'))) ?></p>
                     <p class="muted">Fecha: <?= htmlspecialchars($m['fecha']) ?></p>
                     <div class="row">
-                        <a class="btn" href="<?= (BASE_URL ? rtrim(BASE_URL, '/') : '') ?>/mensajes/show?id=<?= (int)$m['id'] ?>">Ver</a>
-                        <a class="btn secondary" href="<?= (BASE_URL ? rtrim(BASE_URL, '/') : '') ?>/mensajes/edit?id=<?= (int)$m['id'] ?>">Editar</a>
+                        <a class="btn" href="<?= (BASE_URL ? rtrim(BASE_URL, '/') : '') . '/messages/show?id=' . (int)$m['id_mensajes'] ?>">Ver</a>
+                        <a class="btn secondary" href="<?= (BASE_URL ? rtrim(BASE_URL, '/') : '') . '/messages/edit?id=' . (int)$m['id_mensajes'] ?>">Editar</a>
                     </div>
                 </article>
             <?php endforeach; ?>

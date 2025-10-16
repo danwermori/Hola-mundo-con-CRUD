@@ -4,7 +4,7 @@
 
 RewriteEngine On
 
-RewriteBase /hola-mundo-MORI/public
+RewriteBase /Hola-mundo-crud-MORI/public
 
 RewriteCond %{REQUEST_FILENAME} !-f
 

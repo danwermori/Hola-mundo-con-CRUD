@@ -5,12 +5,12 @@ class MensajeController extends Controller
     public function index()
     {
         $mensajes = Mensaje::all();
-        $this->views('mensajes/index', compact('mensajes'));
+        $this->views('messages/index', compact('mensajes'));
     }
 
     public function create()
     {
-        $this->views('mensajes/create');
+        $this->views('messages/create');
     }
 
     private function handleUpload(?array $file): ?string
@@ -39,7 +39,7 @@ class MensajeController extends Controller
             $this->redirect('/mensajes/show?id_mensajes=' . $id);
         } catch (Throwable $e) {
             $error = $e->getMessage();
-            $this->views('mensajes/create', compact('error'));
+            $this->views('messages/create', compact('error'));
         }
     }
 
@@ -64,7 +64,7 @@ class MensajeController extends Controller
             echo 'Mensaje no encontrado';
             return;
         }
-        $this->views('mensajes/edit', compact('mensaje'));
+        $this->views('messages/edit', compact('mensaje'));
     }
 
     public function update()
@@ -80,11 +80,11 @@ class MensajeController extends Controller
             $new = $this->handleUpload($_FILES['imagen'] ?? null);
             $imagenPath = ($new !== null) ? $new : ($orig['imagen'] ?? null);
             Mensaje::updateById($id, ['titulo' => $titulo, 'descripcion' => $descripcion, 'imagen' => $imagenPath, 'fecha' => $fecha]);
-            $this->redirect('/mensajes/show?id_mensajes=' . $id);
+            $this->redirect('/messages/show?id_mensajes=' . $id);
         } catch (Throwable $e) {
             $error = $e->getMessage();
             $mensaje = ['id' => $_POST['id_mensajes'] ?? 0, 'titulo' => $_POST['titulo'] ?? '', 'descripcion' => $_POST['descripcion'] ?? '', 'fecha' => $_POST['fecha'] ?? '', 'imagen' => $_POST['imagen_actual'] ?? null];
-            $this->views('mensajes/edit', compact('mensaje', 'error'));
+            $this->views('messages/edit', compact('mensaje', 'error'));
         }
     }
 
@@ -92,6 +92,6 @@ class MensajeController extends Controller
     {
         $id = (int)($_POST['id_mensajes'] ?? 0);
         if ($id) Mensaje::deleteById($id);
-        $this->redirect('/mensajes');
+        $this->redirect('/messages');
     }
 }
